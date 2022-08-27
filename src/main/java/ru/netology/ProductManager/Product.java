@@ -2,12 +2,12 @@ package ru.netology.ProductManager;
 
 
 public class Product {
-    protected int id;
+    protected static int id;
     protected String name;
     protected int price;
 
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
