@@ -2,9 +2,11 @@ package ru.netology.ProductManager;
 
 public class RepoProduct {
     protected Product[] sku = new Product[0];
-    public RepoProduct(){//конструктор
+
+    public RepoProduct() {//конструктор
 
     }
+
     public void addSku(Product addSku) { //добавляем новые продукты
 
         Product[] tmp = new Product[sku.length + 1];// создаю временный массив с возможностью добавлять ячейки
@@ -15,6 +17,7 @@ public class RepoProduct {
             sku = tmp;
         }
     }
+
     public Product[] findAll() { //выводим  все продукты
         return sku;
     }
@@ -23,15 +26,15 @@ public class RepoProduct {
         Product[] tmp = new Product[sku.length - 1];
         int index;
         index = 0;
-        for (Product sku :sku) {
+        for (Product sku : sku) {
             if (Product.getId() != id) {
                 tmp[index] = sku;
                 index++;
             }
         }
-            sku = tmp;
-        }
+        sku = tmp;
     }
+}
 
 
 
