@@ -2,12 +2,17 @@ package ru.netology.ProductManager;
 
 
 public class Product {
-    protected static int id;
+    protected int id;
     protected String name;
     protected int price;
 
+    public Product(int id, String name, int price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
@@ -30,12 +35,4 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    public Product(int id, String name, int price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
-
-
 }
