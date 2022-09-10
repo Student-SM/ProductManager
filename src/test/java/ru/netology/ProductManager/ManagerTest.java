@@ -70,4 +70,22 @@ public class ManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void notMatchTheProduct() {//не соответствует товару product запросу search
+
+        boolean expected = false;
+        boolean actual = manager.matches(book1, "Пятый");
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void goodsCorrespond() {//товар соответствует product запросу search
+
+        boolean expected = true;
+        boolean actual = manager.matches(smartphone2, "Второй");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
