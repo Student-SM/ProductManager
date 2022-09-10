@@ -12,8 +12,8 @@ public class ManagerTest {
 
     Book book1 = new Book(1, "Один", 111, "Первый");
     Book book2 = new Book(2, "Два", 222, "Второй");
-    Smartphone smartphone1 = new Smartphone(4, "Один", 11111, "Первый");
-    Smartphone smartphone2 = new Smartphone(5, "Два", 22222, "Второй");
+    Smartphone smartphone1 = new Smartphone(3, "Один", 11111, "Первый");
+    Smartphone smartphone2 = new Smartphone(4, "Второй", 22222, "Второй");
 
     @BeforeEach
     public void setup() {
@@ -25,10 +25,18 @@ public class ManagerTest {
     }
 
     @Test
-    public void nameMatches() {//метод совпадения по имени
+    public void nameMatches2() {//метод совпадения по имени в двух товарах
 
         Product[] actual = manager.searchBy("Один");
         Product[] expected = {book1, smartphone1};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void nameMatches1() {//метод совпадения по имени в одном товаре
+
+        Product[] actual = manager.searchBy("Второй");
+        Product[] expected = {smartphone2};
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -41,5 +49,25 @@ public class ManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
 
+    }
+
+    @Test
+    public void findAll() { // возврат всех товаров добавленных в массив в порядке добавления
+
+        Product[] expected = {book1, book2, smartphone1, smartphone2};
+        Product[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void removeById() { //удаление продукта по Id
+
+        manager.removeById(3);
+
+        Product[] expected = {book1,book2,smartphone2};
+        Product[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
     }
 }
