@@ -7,8 +7,13 @@ public class Manager {
         this.repository = repository;
     }
     public void add(Product product) { //метод добавления
+
         repository.add(product);
     }
+    public Product[] findAll(){ //метод все продукты
+        return repository.findAll();
+    }
+
     public Product[] removeById(int id) { //метод удаления по id
       repository.remoteById(id);
         return new Product[0];

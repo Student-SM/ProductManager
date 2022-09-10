@@ -1,32 +1,45 @@
 package ru.netology.ProductManager;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class ManagerTest {
 
-    @Test
-    public void test() {//метод добавления
-        Repository repo = new Repository();//создаем репозиторий
-        Manager manager = new Manager(repo);//создаем менеджер
 
-        Book book1 = new Book(1, "Первая", 111, "ПервыйАвтор");
-        Book book2 = new Book(2, "Вторая", 222, "ВторойАвтор");
-        Book book3 = new Book(3, "Третья", 333, "ТретийАвтор");
-        Smartphone smartphone1 = new Smartphone(4, "Сотовый1", 11111, "Производитель1");
-        Smartphone smartphone2 = new Smartphone(5, "Сотовый2", 22222, "Производитель2");
+    Repository repo = new Repository();//создаем репозиторий
+    Manager manager = new Manager(repo);//создаем менеджер
 
+    Book book1 = new Book(1, "Один", 111, "Первый");
+    Book book2 = new Book(2, "Два", 222, "Второй");
+    Smartphone smartphone1 = new Smartphone(4, "Один", 11111, "Первый");
+    Smartphone smartphone2 = new Smartphone(5, "Два", 22222, "Второй");
+
+    @BeforeEach
+    public void setup() {
 
         manager.add(book1);
         manager.add(book2);
-        manager.add(book3);
         manager.add(smartphone1);
         manager.add(smartphone2);
+    }
 
+    @Test
+    public void nameMatches() {//метод совпадения по имени
 
-        Product[] actual = manager.searchBy("Сотовый2");
-        Product[] expected = {smartphone2};
+        Product[] actual = manager.searchBy("Один");
+        Product[] expected = {book1, smartphone1};
 
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void nameDoesNotMatch() {//когда имя не соответствует
+
+        Product[] actual = manager.searchBy("Третий");
+        Product[] expected = {};
+
+        Assertions.assertArrayEquals(expected, actual);
+
     }
 }
