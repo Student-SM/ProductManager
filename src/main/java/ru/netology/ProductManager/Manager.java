@@ -9,8 +9,9 @@ public class Manager {
     public void add(Product product) { //метод добавления
         repository.add(product);
     }
-    public void removeById(int id) { //метод удаления по id
+    public Product[] removeById(int id) { //метод удаления по id
       repository.remoteById(id);
+        return new Product[0];
     }
 
     public Product[] searchBy(String text) {
