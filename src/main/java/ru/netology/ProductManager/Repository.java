@@ -12,11 +12,12 @@ public class Repository {
         tmp[tmp.length - 1] = product;
         products = tmp;
     }
+
     public void remoteById(int id) {    //Метод удаления товара по ID
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
-            if (product.getId() !=id) {
+            if (product.getId() != id) {
                 tmp[copyToIndex] = product;
                 copyToIndex++;
             }
@@ -24,6 +25,7 @@ public class Repository {
         products = tmp;
 
     }
+
     public Product[] findAll() {    //Метод показать все товары.
 
         return products;

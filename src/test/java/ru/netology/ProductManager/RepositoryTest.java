@@ -39,6 +39,7 @@ public class RepositoryTest {
         Product[] actual = repo.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
 
     public void remoteById() {//удаление по ID (удаляем второй товар)

@@ -32,6 +32,7 @@ public class ManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void nameMatches1() {//метод совпадения по имени в одном товаре
 
@@ -65,7 +66,7 @@ public class ManagerTest {
 
         manager.removeById(3);
 
-        Product[] expected = {book1,book2,smartphone2};
+        Product[] expected = {book1, book2, smartphone2};
         Product[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
@@ -79,6 +80,7 @@ public class ManagerTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
     @Test
     public void goodsCorrespond() {//товар соответствует product запросу search
 
